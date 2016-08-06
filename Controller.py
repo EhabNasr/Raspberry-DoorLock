@@ -67,7 +67,7 @@ def main():
         On_Hold_Message()
         getChar()
         Welcome_Message()
-        while (numberOfTries < 3) and not (Lock.isOpen()):
+        while (numberOfTries < 3) and (not Lock.isOpen()):
             Receiving_Pin_Code_Message()
             Pass = getPassword()
             if Pass == RightPass :
