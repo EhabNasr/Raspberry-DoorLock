@@ -1,10 +1,11 @@
 import I2C_LCD_driver
 import keypad
 import time
-
+import ServoLock as Lock
 
 mylcd = I2C_LCD_driver.lcd()
 kp = keypad.keypad()
+RightPass = '2222'
 
 def getPassword():
     password = ''
@@ -41,15 +42,26 @@ def Receiving_Pin_Code_Message():
     mylcd.lcd_clear()
     mylcd.lcd_display_string('Enter Pin Code:', 1)
 
-
-
+def Error_Message():
+    mylcd.lcd_clear()
+    print('Wrong Pin Code!')
+    mylcd.lcd_clear()
+    mylcd.lcd_display_string('Wrong Pin Code!', 1)
 
 def main():
+    Pass = ''
+    numberOfTries = 0
     On_Hold_Message()
     getChar()
     Welcome_Message()
     Receiving_Pin_Code_Message()
     Pass = getPassword()
+
+    if Pass == RightPass :
+        Lock.openLock()
+    else:
+        Error_Message()
+        numberOfTries += 1
 
 
 main()
