@@ -85,11 +85,11 @@ def main():
         Lock.closeLock()
         On_Hold_Message()
         LockIndicator.switchOff()
-        while (kp.getKey() == None) and (not LockToggle.checkInput()):
+        while (kp.getKey() == None) and LockToggle.checkInput():
             pass
-        if LockToggle.checkInput():
+        if not LockToggle.checkInput():
             OpenDoor()
-            while Lock.isOpen() and (not LockToggle.checkInput()) :
+            while LockToggle.checkInput():
                 pass
             CloseDoor()
         else: #kp.getKey not Null
@@ -101,7 +101,8 @@ def main():
                 Pass = getPassword()
                 if Pass == RightPass :
                     OpenDoor()
-                    time.sleep(5)
+                    while not LockToggle.checkInput():
+                        pass
                     CloseDoor()
                     break
                 else:
