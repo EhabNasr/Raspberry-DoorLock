@@ -7,7 +7,8 @@ import LockIndicator_RGB as  LockIndicator
 
 mylcd = I2C_LCD_driver.lcd()
 kp = keypad.keypad()
-RightPass = '2222'
+fo = open("foo.txt", "r")
+RightPass = fo.read(4)
 
 def getPassword():
     password = ''
