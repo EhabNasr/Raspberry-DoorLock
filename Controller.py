@@ -12,10 +12,10 @@ def getPassword():
     char = ''
     while len(password) < 4 or (char != '8'):
         char = getChar()
-        if char == '#' or len(password) >= 4:
-            pass
-        elif char == '*':
+        if char == '*':
             password = password[:-1]
+        elif char == '8' or len(password) >= 4:
+            pass
         else:
             password += str(char)
         mylcd.lcd_display_string((password + '    '), 2, 0)
