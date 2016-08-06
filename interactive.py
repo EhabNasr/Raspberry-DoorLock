@@ -1,6 +1,9 @@
 import inputInterface as UI
 import ServoLock as Lock
 import time
+
+#to be replaced by Controller
+
 while True:
     print('Please press any key to inter password: ')
     UI.getChar()

@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 import time
-GPIO.setup(23, GPIO.OUT)
-p = GPIO.PWM (23, 50)
+GPIO.setup(12, GPIO.OUT)
+p = GPIO.PWM (12, 50)
 p.start(0)
 
 CLOSE_LOCK_DUTY_CYCLE = 2.5

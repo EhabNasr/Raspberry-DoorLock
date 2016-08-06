@@ -1,6 +1,7 @@
 import keypad
 import time
 
+#to be replaced by Controller
 
 kp = keypad.keypad()
 
