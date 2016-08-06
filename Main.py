@@ -1,2 +1,2 @@
 import RPi.GPIO as GPIO
-#Raspberry Pi IP: 192.168. .64
+#Raspberry Pi IP: 192.168.1.64
