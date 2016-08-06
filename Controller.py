@@ -102,8 +102,8 @@ def main():
                 Pass = getPassword()
                 if Pass == RightPass :
                     OpenDoor()
-                    while not LockToggle.checkInput():
-                        pass
+                    while LockToggle.checkInput():
+                        time.sleep(0.1)
                     CloseDoor()
                     break
                 else:
