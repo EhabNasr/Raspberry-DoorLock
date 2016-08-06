@@ -11,7 +11,7 @@ def checkInput():
         return False
     else:
         time.sleep(0.5)
-        return (not GPIO.input())
+        return not GPIO.input(24)
     return
 
 
