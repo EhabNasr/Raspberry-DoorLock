@@ -10,11 +10,11 @@ RightPass = '2222'
 def getPassword():
     password = ''
     char = ''
-    while len(password) < 4 or (char != '8'):
+    while len(password) < 4 or (char != "8"):
 
 
         print ('condition en(password) < 4')
-        print(len(password))
+        print(len(password) < 4 )
         print('condition (char != 8)')
         print(char != '8')
 
