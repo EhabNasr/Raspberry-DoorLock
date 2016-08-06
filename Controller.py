@@ -12,7 +12,7 @@ def getPassword():
     char = ''
     while len(password) < 4 or (char != '8'):
         char = getChar()
-        if char == '#':
+        if char == '#' or len(password) >= 4:
             pass
         elif char == '*':
             password = password[:-1]
