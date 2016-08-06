@@ -9,9 +9,12 @@ RightPass = '2222'
 
 def getPassword():
     password = ''
-    while len(password) < 4:
+    char = ''
+    while len(password) < 4 or (char != '#'):
         char = getChar()
-        if char == '*':
+        if char == '#':
+            pass
+        elif char == '*':
             password = password[:-1]
         else:
             password += str(char)
@@ -74,7 +77,7 @@ def main():
                 Lock.openLock()
                 time.sleep(5)
                 Lock.closeLock()
-                continue
+                break
             else:
                 Error_Message()
                 numberOfTries += 1
