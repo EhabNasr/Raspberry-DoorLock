@@ -11,7 +11,7 @@ def getPassword():
     while len(password) < 4:
         char = getChar()
         password += str(char)
-        mylcd.lcd_display_string(('password' + '    '), 2, 0)
+        mylcd.lcd_display_string((password + '    '), 2, 0)
         print(password)
     return password
 
