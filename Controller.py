@@ -11,7 +11,10 @@ def getPassword():
     password = ''
     while len(password) < 4:
         char = getChar()
-        password += str(char)
+        if char == '*':
+            password = password[:-1]
+        else:
+            password += str(char)
         mylcd.lcd_display_string((password + '    '), 2, 0)
         print(password)
     return password
@@ -48,20 +51,34 @@ def Error_Message():
     mylcd.lcd_clear()
     mylcd.lcd_display_string('Wrong Pin Code!', 1)
 
-def main():
-    Pass = ''
-    numberOfTries = 0
-    On_Hold_Message()
-    getChar()
-    Welcome_Message()
-    Receiving_Pin_Code_Message()
-    Pass = getPassword()
 
-    if Pass == RightPass :
-        Lock.openLock()
-    else:
-        Error_Message()
-        numberOfTries += 1
+#  Three times wrong
+def Warning_With_Message():
+    mylcd.lcd_clear()
+    mylcd.lcd_display_string('Warning!', 1, 5)
+    mylcd.lcd_display_string('You Have to Wait', 2, 0)
+    time.sleep(10)
+
+def main():
+    while True:
+        Pass = ''
+        numberOfTries = 0
+        Lock.closeLock()
+        On_Hold_Message()
+        getChar()
+        Welcome_Message()
+        while (numberOfTries < 3) and not (Lock.isOpen()):
+            Receiving_Pin_Code_Message()
+            Pass = getPassword()
+            if Pass == RightPass :
+                Lock.openLock()
+                time.sleep(5)
+                Lock.closeLock()
+            else:
+                Error_Message()
+                numberOfTries += 1
+        if numberOfTries >= 3 :
+            Warning_With_Message()
 
 
 main()
