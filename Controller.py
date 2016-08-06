@@ -51,7 +51,15 @@ def Receiving_Pin_Code_Message():
     mylcd.lcd_display_string('Enter Pin Code:', 1)
 
 def Error_Message():
+    LockIndicator.switchRed()
     mylcd.lcd_clear()
+    LockIndicator.switchOff()
+    time.sleep(0.1)
+    LockIndicator.switchRed()
+    time.sleep(0.1)
+    LockIndicator.switchOff()
+    time.sleep(0.1)
+    LockIndicator.switchRed()
     print('Wrong Pin Code!')
     mylcd.lcd_clear()
     mylcd.lcd_display_string('Wrong Pin Code!', 1)
@@ -69,8 +77,8 @@ def Warning_With_Message():
 
 
 def OpenDoor():
-    Lock.openLock()
     LockIndicator.switchGreen()
+    Lock.openLock()
     Welcome_Message()
 
 def CloseDoor():
