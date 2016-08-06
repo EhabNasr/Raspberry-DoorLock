@@ -46,10 +46,10 @@ def Receiving_Pin_Code_Message():
 
 def main():
     On_Hold_Message()
-    kp.getChar()
+    getChar()
     Welcome_Message()
     Receiving_Pin_Code_Message()
-    Pass = kp.getPassword()
+    Pass = getPassword()
 
 
 main()
