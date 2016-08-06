@@ -88,9 +88,10 @@ def main():
         while (kp.getKey() == None) and LockToggle.checkInput():
             pass
         if not LockToggle.checkInput():
+            time.sleep(0.5)
             OpenDoor()
             while LockToggle.checkInput():
-                pass
+                time.sleep(0.1)
             CloseDoor()
         else: #kp.getKey not Null
             LockIndicator.switchBlue()
