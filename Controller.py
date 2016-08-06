@@ -10,19 +10,11 @@ RightPass = '2222'
 def getPassword():
     password = ''
     char = ''
-    while len(password) < 4 or (char != 8):
-        print('char is: ')
-        print(char)
-        print ('condition en(password) < 4')
-        print(len(password) < 4 )
-        print('condition (char != 8)')
-        print(char != '8')
-
-
+    while len(password) < 4 or (char != '#'):
         char = getChar()
         if char == '*':
             password = password[:-1]
-        elif char == '8' or len(password) >= 4:
+        elif char == '#' or len(password) >= 4:
             pass
         else:
             password += str(char)
@@ -49,7 +41,7 @@ def Welcome_Message():
     print('Welcome!')
     mylcd.lcd_clear()
     mylcd.lcd_display_string('Welcome!', 1)
-    time.sleep(2)
+    time.sleep(1)
 
 def Receiving_Pin_Code_Message():
     print('Enter Pin Code: ')
@@ -61,7 +53,7 @@ def Error_Message():
     print('Wrong Pin Code!')
     mylcd.lcd_clear()
     mylcd.lcd_display_string('Wrong Pin Code!', 1)
-
+    time.sleep(2)
 
 #  Three times wrong
 def Warning_With_Message():
